@@ -1774,6 +1774,10 @@ RIBDaemon::RIBDaemon(cacep::AppConHandlerInterface *app_con_callback,
 
 RIBDaemon::~RIBDaemon() {
 	LOG_INFO("RIBDaemon destructor called");
+
+	// Destroy CDAP
+	cdap::fini();
+
 	// Delete all schemas
 	std::map<uint64_t, RIBSchema*>::iterator it;
 	for(it = ver_schema_map.begin(); it != ver_schema_map.end(); it++){
